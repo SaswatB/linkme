@@ -12,7 +12,13 @@ const insertGeneratedCode = (
   editor: vscode.TextEditor,
   edit: vscode.TextEditorEdit
 ) => {
-  edit.insert(editor.selection.start, "lm_" + genHexString(10) + " ");
+  const prefix = vscode.workspace
+    .getConfiguration("linkme")
+    .get("generatedPrefix");
+  const randomHex = genHexString(
+    vscode.workspace.getConfiguration("linkme").get("generatedHexLength", 10)
+  );
+  edit.insert(editor.selection.start, `${prefix}${randomHex} `);
 };
 
 export function registerGenerators(context: vscode.ExtensionContext) {

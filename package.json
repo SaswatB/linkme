@@ -1,6 +1,6 @@
 {
   "name": "linkme",
-  "displayName": "linkme",
+  "displayName": "LinkMe",
   "description": "Generates unique codes for easy searching",
   "version": "0.0.1",
   "engines": {
@@ -10,6 +10,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onStartupFinished",
     "onCommand:linkme.generateCode",
     "onCommand:linkme.generateCodeComment"
   ],
@@ -23,8 +24,42 @@
       {
         "command": "linkme.generateCodeComment",
         "title": "Generate LinkMe Code Comment"
+      },
+      {
+        "command": "linkme.copy",
+        "title": "LinkMe Internal Copy"
       }
-    ]
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "linkme.copy",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "LinkMe",
+      "properties": {
+        "linkme.generatedPrefix": {
+          "type": "string",
+          "description": "The prefix used in generated codes",
+          "default": "lm_",
+          "pattern": "[0-9a-zA-Z_]+"
+        },
+        "linkme.generatedHexLength": {
+          "type": "number",
+          "description": "The length of the random hex used in generated codes.",
+          "default": 10
+        },
+        "linkme.decorationColor": {
+          "type": "string",
+          "description": "The color of highlighted codes.",
+          "default": "#388e3c",
+          "pattern": "#[0-9a-f]{6}"
+        }
+      }
+    }
   },
   "scripts": {
     "test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/suite/index.js",
