@@ -15,8 +15,9 @@ Codes are highlighted in the editor, with actions to copy or search on hover.
 
 This extension contributes the following settings:
 
-- `linkme.generatedPrefix`: Sets the prefix used in generated codes
-- `linkme.generatedHexLength`: Sets the length of the random hex used in generated codes.
+- `linkme.generatedPrefix`: The prefix used in generated codes
+- `linkme.generatedHexLength`: The length of the random hex used in generated codes.
+- `linkme.decorationColor`: The color of highlighted codes.
 
 ## Release Notes
 
